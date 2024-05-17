@@ -10,9 +10,6 @@ const Login: React.FC = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user; // Access user data
-
-      // Handle successful login (e.g., redirect, store user info)
-      console.log("Logged in:", user);
     } catch (error) {
       console.error("Login error:", error);
       // Handle login error gracefully (e.g., display error message)
