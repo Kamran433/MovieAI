@@ -1,23 +1,24 @@
-// components/Navbar.tsx
 "use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BellIcon } from "@heroicons/react/outline";
 import { MenuIcon } from "@heroicons/react/solid";
-
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { ProfileImage } from "./ProfileImage";
 
 const Navbar: React.FC = () => {
   const router = useRouter();
+  const pathname = usePathname();
+
+  // Log the pathname to ensure we're getting the correct value
+  console.log("Current Pathname:", pathname);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("searchQuery") as string;
     // Redirect to the search page with the search query
-    router.push(`/search?q=${searchQuery}`);
+    router.push(`/search/${searchQuery}`);
   };
 
   return (
@@ -45,7 +46,7 @@ const Navbar: React.FC = () => {
                 className="hidden md:flex  items-center space-x-2"
               >
                 <Image
-                  className="rounded-md "
+                  className="rounded-md"
                   src="/logo.png"
                   alt="Logo"
                   width={40}
@@ -87,20 +88,23 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <form onSubmit={handleSubmit} className="ml-4 flex">
-              <input
-                type="text"
-                name="searchQuery"
-                placeholder="Search"
-                className="bg-gray-200 rounded-md py-1 px-2 text-black"
-              />
-              <button
-                type="submit"
-                className="ml-3 px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600"
-              >
-                Search
-              </button>
-            </form>
+            {/* Show search form only on the search page */}
+            {pathname && pathname.startsWith("/search") && (
+              <form onSubmit={handleSubmit} className="ml-4 flex">
+                <input
+                  type="text"
+                  name="searchQuery"
+                  placeholder="Search"
+                  className="bg-gray-200 rounded-md py-1 px-2 text-black"
+                />
+                <button
+                  type="submit"
+                  className="ml-3 px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600"
+                >
+                  Search
+                </button>
+              </form>
+            )}
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white hover:bg-gray-700 
