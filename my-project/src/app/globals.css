@@ -16,14 +16,25 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.jagga {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh; /* Set the height of the body to the viewport 
+  ;height */
+}
+.jagga::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://wallpaperaccess.com/full/3658600.jpg"); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover; /* Cover the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+  opacity: 1; /* Adjust the opacity (0.5 in this case) */
 }
 
 @layer utilities {

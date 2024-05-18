@@ -1,5 +1,12 @@
+import Search from "../../components/Search";
+import Navbar from "../../components/Navbar";
 export default function Home() {
   return (
-    <h1 className="text-center text-3xl font-bold underline">Hello world!</h1>
+    <>
+      <Navbar />
+      <div className="jagga flex flex-col  justify-center items-center">
+        <Search />
+      </div>
+    </>
   );
 }

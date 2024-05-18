@@ -1,0 +1,53 @@
+/* Reset some basic styles */
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style for the navbar */
+.navbar {
+  display: flex; /* Use flexbox layout */
+  list-style: none; /* Remove bullets from list items */
+  background-color: #333; /* Background color for the navbar */
+  padding: 10px; /* Padding around the navbar */
+  align-items: center; /* Center items vertically */
+}
+
+/* Style for each nav item */
+.nav-item {
+  padding: 10px 15px; /* Padding inside each nav item */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline from links */
+  display: flex; /* Use flexbox layout for nav items */
+  align-items: center; /* Center items vertically */
+}
+
+/* Push .right class items to the right */
+.nav-item.right {
+  margin-left: auto; /* Push these items to the right */
+}
+
+/* Optional: Hover effect */
+.nav-item:hover {
+  background-color: #575757;
+  cursor: pointer;
+}
+
+/* Style for the search input */
+.nav-item input[type="text"] {
+  padding: 5px; /* Padding inside the input field */
+  border-radius: 4px; /* Rounded corners */
+  border: none; /* Remove default border */
+  outline: none; /* Remove default outline */
+  margin-right: 10px; /* Space between input and user image */
+}
+
+/* Style for the user image */
+.user-image {
+  width: 30px; /* Width of the user image */
+  height: 30px; /* Height of the user image */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Cover the area while maintaining aspect ratio */
+  border: 2px solid white; /* Optional: border around the image */
+}
