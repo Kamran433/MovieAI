@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("searchQuery") as string;
     // Redirect to the search page with the search query
-    router.push(`/search?q=${searchQuery}`);
+    router.push(`/search/${searchQuery}`);
   };
 
   return (
