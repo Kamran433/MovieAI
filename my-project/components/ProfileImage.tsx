@@ -62,7 +62,7 @@ const ProfileImage: React.FC = () => {
             <div className="absolute right-0 mt-2 w-40 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20">
               <button
                 onClick={handleLogout}
-                className="group flex items-center w-full px-4 py-2 z-20 text-sm text-gray-700 hover:bg-gray-100"
+                className="group flex items-center w-full px-4 py-2 z-20 text-sm text-gray-700 hover:bg-gray-300 hover:rounded-full"
               >
                 Logout
               </button>
