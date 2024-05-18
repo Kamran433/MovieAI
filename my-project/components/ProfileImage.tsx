@@ -1,7 +1,6 @@
 import auth from "../config/firebase-server";
 import { User } from "firebase/auth";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 

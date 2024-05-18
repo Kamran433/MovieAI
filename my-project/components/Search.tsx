@@ -11,7 +11,7 @@ const SearchBar: React.FC = () => {
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("searchQuery") as string;
     // Redirect to the search page with the search query
-    router.push(`/search?q=${searchQuery}`);
+    router.push(`/search/${searchQuery}`);
   };
 
   return (
@@ -22,6 +22,7 @@ const SearchBar: React.FC = () => {
         className="flex flex-col items-center w-full z-20"
       >
         <input
+          name="searchQuery" // Make sure to include the name attribute for FormData
           type="text"
           className="bg-white focus:outline-none focus:shadow-outline border border-blue-700 rounded-lg py-2 px-4 block w-full mb-4"
           placeholder="What's on your mind..."
