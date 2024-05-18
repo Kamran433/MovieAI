@@ -20,7 +20,8 @@
   margin: 0;
   padding: 0;
   position: relative;
-  height: 100vh; /* Set the height of the body to the viewport height */
+  height: 100vh; /* Set the height of the body to the viewport 
+  ;height */
 }
 .jagga::after {
   content: "";

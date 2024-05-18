@@ -48,7 +48,7 @@ const ProfileImage: React.FC = () => {
         <>
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer focus:outline-none z-20focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             <Image
               src={profilePictureUrl || "/logo.png"}
@@ -62,7 +62,7 @@ const ProfileImage: React.FC = () => {
             <div className="absolute right-0 mt-2 w-40 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20">
               <button
                 onClick={handleLogout}
-                className="group flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                className="group flex items-center w-full px-4 py-2 z-20 text-sm text-gray-700 hover:bg-gray-100"
               >
                 Logout
               </button>
@@ -72,7 +72,7 @@ const ProfileImage: React.FC = () => {
       ) : (
         <button
           onClick={handleGoogleLogin}
-          className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600"
+          className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600 z-20"
         >
           Login
         </button>

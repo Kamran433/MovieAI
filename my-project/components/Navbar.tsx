@@ -51,9 +51,6 @@ const Navbar: React.FC = () => {
                   width={40}
                   height={40}
                 />
-                <span className="hidden md:block text-white font-bold text-xl">
-                  MovieAI
-                </span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:block">
