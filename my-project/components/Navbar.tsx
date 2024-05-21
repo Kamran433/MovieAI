@@ -11,7 +11,6 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
 
   // Log the pathname to ensure we're getting the correct value
-  console.log("Current Pathname:", pathname);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
