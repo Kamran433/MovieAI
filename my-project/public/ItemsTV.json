@@ -1,0 +1,31 @@
+{
+  "items": {
+    "bootstrap": [
+      {
+        "id": 1,
+        "title": "War",
+        "imageUrl": "https://artfiles.alphacoders.com/161/thumb-800-161396.webp"
+      },
+      {
+        "id": 2,
+        "title": "Adventure",
+        "imageUrl": "https://artfiles.alphacoders.com/161/thumb-800-161396.webp"
+      },
+      {
+        "id": 3,
+        "title": "Action",
+        "imageUrl": "https://artfiles.alphacoders.com/161/thumb-800-161396.webp"
+      },
+      {
+        "id": 4,
+        "title": "Discovery",
+        "imageUrl": "https://artfiles.alphacoders.com/161/thumb-800-161396.webp"
+      },
+      {
+        "id": 5,
+        "title": "Guy in Red",
+        "imageUrl": "https://artfiles.alphacoders.com/161/thumb-800-161396.webp"
+      }
+    ]
+  }
+}

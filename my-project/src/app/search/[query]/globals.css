@@ -15,7 +15,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+.recommend {
+  margin: auto;
+}
 .jagga {
   margin: 0;
   padding: 0;

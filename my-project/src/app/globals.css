@@ -36,7 +36,6 @@
   background-repeat: no-repeat; /* Do not repeat the background image */
   opacity: 1; /* Adjust the opacity (0.5 in this case) */
 }
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

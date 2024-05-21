@@ -15,11 +15,11 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="container flex flex-col justify-center items-center h-full z-10">
+    <div className="container flex justify-center items-center h-full ">
       {/* Search Form */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center w-full z-20"
+        className="flex flex-col items-center w-full z-20 mt-[-18vh]"
       >
         <input
           name="searchQuery" // Make sure to include the name attribute for FormData
@@ -29,7 +29,7 @@ const SearchBar: React.FC = () => {
         />
         <button
           type="submit"
-          className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600"
+          className="px-6 py-2 text-white rounded-md w-40 hover:bg-blue-500   bg-green-600 focus:outline-none focus:bg-blue-600"
         >
           Search
         </button>

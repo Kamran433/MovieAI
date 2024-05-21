@@ -71,7 +71,7 @@ const ProfileImage: React.FC = () => {
       ) : (
         <button
           onClick={handleGoogleLogin}
-          className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600 z-20"
+          className="px-4 py-1  text-white rounded-md hover:bg-blue-500   bg-green-600 focus:outline-none focus:bg-blue-600 z-20"
         >
           Login
         </button>
