@@ -2,6 +2,7 @@
 import Navbar from "../../../../components/Navbar";
 import { useSearchParams } from "next/navigation";
 import React from "react";
+import SideNav from "../../../../components/SideNav";
 
 const SearchResults: React.FC = () => {
   const searchParams = useSearchParams();
@@ -11,6 +12,7 @@ const SearchResults: React.FC = () => {
     <div>
       <Navbar />
       <div className="jagga z-10">
+        <SideNav />
         <div className="z-20">
           <h1>Search Results</h1>
           <p>Search query: {query}</p>
