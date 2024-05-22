@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/auth": "^1.7.3",
     "@heroicons/react": "^1.0.6",
+    "@iconify/react": "^4.1.1",
     "bootstrap": "^5.3.3",
+    "firebase": "^10.12.1",
     "next": "14.2.3",
+    "pnpm": "^9.1.2",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
@@ -19,8 +23,12 @@
     "react-speech-recognition": "^3.10.0",
     "regenerator-runtime": "^0.14.1"
   },
+  "pnpm": {
+    "ignore-scripts": false,
+    "store": "node_modules/.pnpm-store",
+    "virtual-store": "node_modules/.pnpm-virtual-store"
+  },
   "devDependencies": {
-    "@babel/preset-env": "^7.24.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

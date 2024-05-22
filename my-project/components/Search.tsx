@@ -1,6 +1,6 @@
 "use client";
+import React, { useState } from "react";
 import "regenerator-runtime/runtime";
-import React from "react";
 import { useRouter } from "next/navigation";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -8,19 +8,24 @@ import SpeechRecognition, {
 
 const SearchBar: React.FC = () => {
   const router = useRouter();
-  const { transcript, browserSupportsSpeechRecognition } =
+  const { transcript, browserSupportsSpeechRecognition, resetTranscript } =
     useSpeechRecognition();
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const searchQuery = formData.get("searchQuery") as string;
-    // Redirect to the search page with the search query
-    router.push(`/search/${searchQuery}`);
+    const query = searchQuery || transcript;
+    router.push(`/search/${query}`);
   };
 
-  const onMicrophoneClick = () =>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleMicrophoneClick = () => {
+    resetTranscript(); // Reset transcript before starting speech recognition
     SpeechRecognition.startListening({ language: "en-IN" });
+  };
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -28,7 +33,6 @@ const SearchBar: React.FC = () => {
 
   return (
     <div className="container flex justify-center items-center h-full">
-      {/* Search Form */}
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center w-full z-20 mt-[-18vh]"
@@ -39,14 +43,14 @@ const SearchBar: React.FC = () => {
             type="text"
             className="bg-white focus:outline-none focus:shadow-outline border border-blue-700 rounded-lg py-2 px-4 block w-full pr-12"
             placeholder="What's on your mind..."
-            value={transcript}
-            onChange={(e) => e.preventDefault()} // Prevent input from being edited
+            value={searchQuery || transcript} // Use typed text if available, otherwise use transcript
+            onChange={handleChange}
           />
           <button
             type="button"
             className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-transparent border-none cursor-pointer"
             aria-label="Activate voice search"
-            onClick={onMicrophoneClick}
+            onClick={handleMicrophoneClick}
           >
             <svg
               viewBox="0 0 24 24"

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import BootstrapCarousel from "../carousels/Bootstrap";
-import ResponsiveCarousel from "../carousels/Responsive";
 
 const Crouv: React.FC = () => {
   return (

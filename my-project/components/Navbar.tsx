@@ -10,19 +10,18 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Log the pathname to ensure we're getting the correct value
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("searchQuery") as string;
-    // Redirect to the search page with the search query
     router.push(`/search/${searchQuery}`);
   };
+
   const handleRedirect = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Prevent default anchor tag behavior
+    e.preventDefault();
     router.push("/AskAI");
   };
+
   return (
     <nav className="bg-gray-800 z-20 fixed w-full">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
