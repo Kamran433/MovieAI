@@ -14,7 +14,7 @@
     "next": "14.2.3",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
-    "react-dom": "^18",
+    "react-dom": "^18.3.1",
     "react-responsive-carousel": "^3.2.23",
     "react-speech-recognition": "^3.10.0",
     "regenerator-runtime": "^0.14.1"
@@ -25,6 +25,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-speech-recognition": "^3.9.5",
+    "@types/regenerator-runtime": "^0.13.5",
     "autoprefixer": "^10.4.19",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
