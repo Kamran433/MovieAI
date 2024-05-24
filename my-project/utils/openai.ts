@@ -1,5 +1,6 @@
-// import OpenAI from "openai";
+import OpenAI from "openai";
 
-// const openai = new OpenAI({ apiKey: process.env["OPEN_API_KEY"] });
-
-// export default openai;
+export const openai = new OpenAI({
+  apiKey: "sk-proj-KpCqOlChFD9qMYAvU6gRT3BlbkFJtIXJUPy3dRB6BcxbcBru",
+  dangerouslyAllowBrowser: true, // This is also the default, can be omitted
+});

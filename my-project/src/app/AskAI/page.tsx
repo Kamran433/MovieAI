@@ -1,62 +1,118 @@
 "use client";
-import React from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import Navbar from "../../../components/Navbar";
+import { openai } from "../../../utils/openai"; // Assuming you have properly configured this import
+import OpenAI from "openai";
+
+// Existing imports and component definition...
 
 const AskAI = () => {
-  const { transcript, browserSupportsSpeechRecognition, resetTranscript } =
-    useSpeechRecognition();
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false); // State to track if speech recognition is active
+  const [isTypingEnabled, setIsTypingEnabled] = useState(false); // State to track if manual typing is enabled
+  const { transcript, resetTranscript } = useSpeechRecognition();
+  const setTranscript = useSpeechRecognition();
   const startListening = () => {
     SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
+    setIsListening(true);
+  };
+
+  const stopListening = () => {
+    SpeechRecognition.stopListening();
+    setIsListening(false);
+  };
+
+  const handleTypingToggle = () => {
+    setIsTypingEnabled(!isTypingEnabled);
+    if (isListening) {
+      stopListening();
+    }
+  };
+
+  const handleGoButtonClick = async () => {
+    setIsLoading(true);
+    try {
+      const chatCompletion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "user",
+            content: `What is the name of the movie whose story is ${transcript}?`,
+          },
+        ],
+      });
+      console.log(chatCompletion.choices[0].message.content);
+    } catch (error) {
+      console.error("Error in handleGoButtonClick:", error);
+    } finally {
+      setIsLoading(false);
+      resetTranscript();
+    }
+  };
+
+  const handleClearButtonClick = () => {
+    resetTranscript(); // Clear the transcript
+  };
+
+  const handleChange = () => {
+    if (isListening) {
+      stopListening();
+    }
+    resetTranscript();
   };
 
   return (
     <>
       <Navbar />
-      <div className="jagga z-10 flex flex-col items-center justify-center min-h-screen ">
-        {/* Assuming Navbar component centers itself */}
+      <div className="jagga z-10 flex flex-col items-center justify-center min-h-screen">
         <div className="Container z-20 mt-11 text-center">
           <div
             className="bg-gray-200 rounded-lg p-4 mb-4"
             style={{ height: "300px", width: "800px", overflowY: "auto" }}
           >
-            {/* Assuming 'transcript' is a string containing transcript text */}
             <textarea
               className="w-full h-full bg-transparent resize-none outline-none"
               placeholder="So tell me the plot..."
               value={transcript}
-              readOnly
+              onChange={handleChange}
+              readOnly={!isTypingEnabled}
             />
           </div>
           <div className="flex justify-center space-x-4">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center"
-              onClick={startListening}
+              className={`${
+                isListening ? "bg-green-500" : "bg-gray-500"
+              } hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center`}
+              onClick={isListening ? stopListening : startListening}
             >
-              Begin
+              {isListening ? "Listening..." : "Listen"}
             </button>
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center"
-              onClick={SpeechRecognition.stopListening}
+              onClick={handleClearButtonClick}
             >
-              The-End
+              Clear
+            </button>
+            <button
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
+              onClick={handleTypingToggle}
+            >
+              {isTypingEnabled ? "Disable Typing" : "Enable Typing"}
             </button>
           </div>
           <div className="flex justify-center mt-4">
-            {/* Placing the search button in the middle */}
             <button
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              onClick={SpeechRecognition.abortListening}
+              className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={handleGoButtonClick}
+              disabled={isLoading}
             >
-              Go!
+              {isLoading ? "Processing..." : "Go!"}
             </button>
           </div>
         </div>
