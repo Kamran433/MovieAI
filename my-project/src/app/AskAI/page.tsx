@@ -6,16 +6,15 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import Navbar from "../../../components/Navbar";
 import { openai } from "../../../utils/openai"; // Assuming you have properly configured this import
-import OpenAI from "openai";
 
 // Existing imports and component definition...
 
 const AskAI = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false); // State to track if speech recognition is active
-  const [isTypingEnabled, setIsTypingEnabled] = useState(false); // State to track if manual typing is enabled
+  const [isTypingEnabled, setIsTypingEnabled] = useState(false);
+  const [typedText, setTypedText] = useState(""); // State to track if manual typing is enabled
   const { transcript, resetTranscript } = useSpeechRecognition();
-  const setTranscript = useSpeechRecognition();
   const startListening = () => {
     SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
     setIsListening(true);
@@ -55,14 +54,15 @@ const AskAI = () => {
   };
 
   const handleClearButtonClick = () => {
-    resetTranscript(); // Clear the transcript
+    resetTranscript();
   };
 
-  const handleChange = () => {
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (isListening) {
       stopListening();
     }
-    resetTranscript();
+    const typedText = event.target.value;
+    setTypedText(typedText); // Update typed text state
   };
 
   return (
@@ -77,7 +77,7 @@ const AskAI = () => {
             <textarea
               className="w-full h-full bg-transparent resize-none outline-none"
               placeholder="So tell me the plot..."
-              value={transcript}
+              value={isTypingEnabled ? typedText : transcript}
               onChange={handleChange}
               readOnly={!isTypingEnabled}
             />
