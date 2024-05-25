@@ -51,7 +51,7 @@ The application will be available at `http://localhost:3000`.
 - **HTML**
 - **CSS**
 - **ChatGPT**
-- **AspireAI**
+- **CohereAI**
 
 ## Contributing
 
