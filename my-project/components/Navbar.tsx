@@ -10,15 +10,16 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Log the pathname to ensure we're getting the correct value
-  console.log("Current Pathname:", pathname);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("searchQuery") as string;
-    // Redirect to the search page with the search query
     router.push(`/search/${searchQuery}`);
+  };
+
+  const handleRedirect = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    router.push("/AskAI");
   };
 
   return (
@@ -71,8 +72,8 @@ const Navbar: React.FC = () => {
                   TV Shows
                 </Link>
                 <Link
-                  href="/ask-ai"
-                  passHref
+                  href="src/app/AskAI"
+                  onClick={handleRedirect}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   AskAI
@@ -89,22 +90,24 @@ const Navbar: React.FC = () => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* Show search form only on the search page */}
-            {pathname && pathname.startsWith("/search") && (
-              <form onSubmit={handleSubmit} className="ml-4 flex">
-                <input
-                  type="text"
-                  name="searchQuery"
-                  placeholder="Search"
-                  className="bg-gray-200 rounded-md py-1 px-2 text-black"
-                />
-                <button
-                  type="submit"
-                  className="ml-3 px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600"
-                >
-                  Search
-                </button>
-              </form>
-            )}
+            {pathname &&
+              (pathname.startsWith("/AskAI") ||
+                pathname.startsWith("/search")) && (
+                <form onSubmit={handleSubmit} className="ml-4 flex">
+                  <input
+                    type="text"
+                    name="searchQuery"
+                    placeholder="Search"
+                    className="bg-gray-200 rounded-md py-1 px-2 text-black"
+                  />
+                  <button
+                    type="submit"
+                    className="ml-3 px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-blue-600"
+                  >
+                    Search
+                  </button>
+                </form>
+              )}
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white hover:bg-gray-700 
@@ -134,9 +137,9 @@ const Navbar: React.FC = () => {
             TV Shows
           </Link>
           <Link
-            href="/ask-ai"
-            passHref
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            href="src/app/AskAI"
+            onClick={handleRedirect}
+            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
             AskAI
           </Link>
