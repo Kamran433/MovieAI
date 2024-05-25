@@ -8,7 +8,7 @@ MovieAI is a powerful web application that leverages cutting-edge AI technologie
 
 ## Features
 
-- **AI-Powered Recommendations**: Using ChatGPT, AspireAI, and other AI networks, MovieAI provides a list of related movies, TV shows, and anime based on user input.
+- **AI-Powered Recommendations**: Using GPT-3.5-Turbo/GPT-4, CohereAI, and other AI networks, MovieAI provides a list of related movies, TV shows, and anime based on user input.
 - **Movie Information**: Find detailed information about movies, including summaries, cast, and ratings.
 - **Streaming Options**: Facilitates paid streaming through partnerships with various streaming networks (to be decided).
 
@@ -17,7 +17,7 @@ MovieAI is a powerful web application that leverages cutting-edge AI technologie
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/Kamran433/MovieAI](https://github.com/Kamran433/MovieAI).git
+git clone https://github.com/Kamran433/MovieAI.git
 ```
 
 2. Navigate to the project directory:
