@@ -1,7 +1,3 @@
-Sure, here's a README for your GitHub repository:
-
----
-
 # MovieAI
 
 MovieAI is a powerful web application that leverages cutting-edge AI technologies to enhance your movie-watching experience. Built with Next14.js, TypeScript, JavaScript, HTML, and CSS, MovieAI provides personalized movie, TV show, and anime recommendations based on plot details, actor names, and other movie-related information.
